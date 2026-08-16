@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journey | From Program.cs</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    
+    <!-- NAVIGATION  -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                From Program.cs
+            </a>
+            <div class="nav-links">
+                <a href="journey.html" class="active-link">
+                    Journey
+                </a>
+                <a href="#">
+                    Notes
+                </a>
+                <a href="#">
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header  -->
+
+    <main>
+        <section class="journey-header">
+            <div class="container">
+                <p class="eyebrow">MY LEARNING JOURNEY</p>
+                <h1>From C# fundamentals to understanding .NET.</h1>
+                <p class="journey-intro">
+                    This isn't a roadmap I followed.
+                    It's a collection of questions, experiments and discoveries that gradually changed how I understood the .NET ecosystem
+                </p>
+            </div>
+
+        </section>
+
+        <!-- JOURNEY CARDS  -->
+        
+        <section class="journey-cards">
+            <div class="container">
+                <!-- JOURNEY SEARCH  -->
+                <div class="journey-search">
+                    <div class="search-label">
+                        Explore the journey
+                    </div>
+                    <div class="search-wrapper">
+                        <span class="search-icon">
+                            ⌕
+                        </span>
+                        <input type="text" id="journeySearch" class="form-control" placeholder="Search my journey...">
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <!-- C#  -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="learning-card" data-topic="csharp">
+                            <span class="card-number">
+                                01
+                            </span>
+                            <h2>C#</h2>
+                            <p class="card-question">
+                                Where I started.
+                            </p>
+                            <p>
+                                I started with the intention of learning the fundamentals of C#
+                            </p>
+                            <a href="../notes/csharp.html">
+                                Explore →
+                            </a>
+                        </article>
+                    </div>
+
+                    <!-- Program.cs  -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="learning-card" data-topic="program cs">
+                            <span class="card-number">
+                                02
+                            </span>
+                            <h2>
+                                Program.cs
+                            </h2>
+                            <p class="card-question">
+                                What is actually happening here?
+                            </p>
+                            <p>
+                                One Program.cs file made me realize that knowing C# syntax wasn't enough to understand the application.
+                            </p>
+                            <a href="../notes/program-cs.html">Explore →</a>
+                        </article>
+                    </div>
+
+                    <!-- .NET  -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="learning-card" data-topic="dotnet">
+                            <span class="card-number">
+                                03
+                            </span>
+                            <h2>
+                                .NET
+                            </h2>
+                            <p class="card-question">
+                                What exactly is .NET?
+                            </p>
+                            <p>
+                                I started exploring the relationship between C# and the .NET platform
+                            </p>
+
+                            <a href="../notes/dotnet.html">Explore →</a>
+                        </article>
+                    </div>
+
+                    <!-- .NET Core  -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="learning-card" data-topic="dotnet core">
+                            <span class="card-number">
+                                04
+                            </span>
+                            <h2>
+                                .NET Core
+                            </h2>
+                            <p class="card-question">
+                                Why was it created?
+                            </p>
+                            <p>
+                                This led me into the history of .NET and wny Microsoft introduced .NET core.
+                            </p>
+                            <a href="../notes/dotnet-core.html">Explore →</a>
+                        </article>
+                    </div>
+
+                    <!-- ASP.NET Core  -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="learning-card" data-topic="aspnet core">
+                            <span class="card-number">
+                                05
+                            </span>
+                            <h2>
+                                ASP.NET Core
+                            </h2>
+                            <p class="card-question">
+                                How does a web application work?
+                            </p>
+                            <p>
+                                The journey moved from understanding the platform to understanding web applications.
+                            </p>
+                            <a href="../notes/aspnet-core.html">Explore →</a>
+                        </article>
+                    </div>
+
+                    <!-- KESTREL  -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="learning-card" data-topic="kestrel">
+                            <span class="card-number">
+                                06
+                            </span>
+                            <h2>
+                                Kestrel
+                            </h2>
+                            <p class="card-question">
+                                Who actually receives the request?
+                            </p>
+                            <p>
+                                This question took me deeper into how an ASP.NET Core application actually runs.
+                            </p>
+                            <a href="../notes/kestrel.html">Explore →</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-section">
+            <div class="container">
+                <div class="next-card">
+                    <p class="eyebrow">
+                        NEXT QUESTIONS
+                    </p>
+
+                    <h2>
+                        The journey doesn't stop at Kestrel.
+                    </h2>
+                    <p>
+                        Middleware.
+                        Routing.
+                        Dependency Injection.
+                        Authentication.
+                        Authorization.
+
+                        More questions waiting to be explored.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Built while learing.
+        </p>
+    </footer>
+     <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="../js/app.js"></script>
+
+</body>
+</html>
