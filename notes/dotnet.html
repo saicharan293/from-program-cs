@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET | From Program.cs</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+
+    <!-- Navigation  -->
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">From Program.cs</a>
+            <div class="nav-links">
+                <a href="../pages/journey.html">
+                    Journey
+                </a>
+                <a href="#" class="active-link">Notes</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE  -->
+
+    <main>
+
+        <!-- HERO  -->
+
+        <section class="note-header">
+            <div class="container">
+                <p class="eyebrow">
+                    JOURNEY · 03
+                </p>
+                <h1>
+                    So, what exactly is .NET?
+                </h1>
+                <p class="note-intro">
+                    I started with C#. Then I realized that understanding the language alone wasn't enough to understand the application I was working on.
+                </p>
+            </div>
+        </section>
+
+        <!-- STORY  -->
+
+        <section class="note-content">
+            <div class="container">
+                <div class="note-story">
+
+                    <!-- QUESTION  -->
+                    <div class="story-block">
+                        <span class="story-number">
+                            01
+                        </span>
+                        <p class="eyebrow">
+                            THE QUESTION
+                        </p>
+                        <h2>
+                            I knew C#. But where does .NET fit?
+                        </h2>
+                        <p>
+                            I initially thought learning C# meant learning the technology behind the application
+                        </p>
+                        <p>
+                            But while looking at <code>Program.cs</code>, I started noticing things that weren't really explained by C# alone.
+                        </p>
+                        <p>
+                            That led me to a simple question:
+                        </p>
+                        <blockquote>
+                            What exactly is .NET?
+                        </blockquote>
+                    </div>
+
+                    <!-- BEFORE .NET  -->
+                    <div class="story-block">
+                        <span class="story-number">
+                            02
+                        </span>
+                        <p class="eyebrow">
+                            BEFORE .NET
+                        </p>
+                        <h2>
+                            Building applications wasn't simple underneath
+                        </h2>
+                        <p>
+                            Before .NET, Microsoft had several technologies, languages and programming models for building applications.
+                        </p>
+                        <p>
+                            Developers could build applications successfully, but there wasn't one common platform underneath all these different approaches.
+                        </p>
+                        <p>
+                            This meant that many underlying concerns had to be handled differently depending on the technology being used.
+                        </p>
+                    </div>
+
+                    <!-- THE PROBLEM  -->
+
+                    <div class="story-block highlight-block">
+                        <span class="story-number">
+                            03
+                        </span>
+                        <p class="eyebrow">
+                            THE PROBLEM
+                        </p>
+                        <h2>
+                            Microsoft wanted a common platform.
+                        </h2>
+                        <p>
+                            The problem wasn't that developers couldn't build applications.
+                        </p>
+                        <p>
+                            The bigger problem was having different languages and technologies working with different underlying models and infrastructure.
+                        </p>
+                        <p>
+                            Microsoft wanted to provide a common platform underneath them - with common runtime services, libraries and development tools.
+                        </p>
+                        <div class="story-diagram">
+
+                            <div>
+                                C#
+                            </div>
+
+                            <div>
+                                Visual Basic
+                            </div>
+
+                            <div>
+                                Other .NET languages
+                            </div>
+                            <span>
+                                ↓
+                            </span>
+                            <strong>
+                                Common .NET Platform
+                            </strong>
+
+                        </div>
+                    </div>
+
+                    <!-- THE SOLUTION  -->
+                    
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            04
+                        </span>
+
+                        <p class="eyebrow">
+                            THE SOLUTION
+                        </p>
+                        <h2>
+                            .NET
+                        </h2>
+                        <p>
+                            .NET was Microsoft's answer to this problem:
+                            a common platform for building and running applications.
+                        </p>
+                        <p>
+                            It brought together a runtime, libraries, developement tools that application could build upon.
+                        </p>
+
+                        <div class="simple-diagram">
+
+                            <div>
+                                C#
+                            </div>
+                            <span>↓</span>
+
+                            <div>
+                                .NET
+                            </div>
+
+                            <span>↓</span>
+
+                            <div>
+                                Application
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WHAT DID .NET PROVIDE -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            05
+                        </span>
+
+                        <p class="eyebrow">
+                            WHAT DID .NET PROVIDE?
+                        </p>
+
+                        <h2>
+                            A common set of building blocks.
+                        </h2>
+
+                        <p>
+                            I started to understand that .NET wasn't simply something that "runs C#".
+                        </p>
+
+                        <p>
+                            It also provides libraries, runtime services and development tools that applications can use.
+                        </p>
+
+                        <pre>
+                            <code>
+                                string text = File.ReadAllText("data.txt");
+                            </code>
+                        </pre>
+
+                        <p>
+                            The C# language give me the syntax to write this code.
+                            But <code>File.ReadAllText()</code> is functionality provided by the .NET libraries.
+                        </p>
+
+                        <p>
+                            This helped me understand that C# and .NET are different pieces working together.
+                        </p>
+
+                    </div>
+
+
+                    <!-- C#  -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            06
+                        </span>
+
+                        <p class="eyebrow">
+                            WHERE DOES C# FIT?
+                        </p>
+
+                        <h2>
+                            C# and .NET are different things.
+                        </h2>
+                        <p>
+                            This was one of the first important distinctions I had to understand.
+                        </p>
+                        <div class="concept-grid">
+                            <div class="concept-card">
+                                <h3>
+                                    C#
+                                </h3>
+                                <p>
+                                    A programming language used to write the application.
+                                </p>
+                            </div>
+                            <div class="concept-card">
+                                <h3>
+                                    .NET
+                                </h3>
+                                <p>
+                                    A development platform and ecosystem that provides the runtime, libraries and tools around the application.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESULT  -->
+
+                    <div class="story-block">
+                        
+                        <span class="story-number">
+                            07
+                        </span>
+
+                        <p class="eyebrow">
+                            WHAT DID THIS CHANGE?
+                        </p>
+
+                        <h2>
+                            C# became part of a larger ecosystem.
+                        </h2>
+
+                        <p>
+                            It became part of a much larger ecosystem.
+                        </p>
+                        <p>
+                            Developers could write applications using languages such as C# while relying on a common runtime, libraries and development environment.
+                        </p>
+                        <p>
+                            But this answered one question and created another.
+                        </p>
+                        <blockquote>
+                            If .NET provides the platform, why did Microsoft eventually create .NET Core?
+                        </blockquote>
+                    </div>
+
+                    <!-- NEXT  -->
+                    
+                    <div class="next-question">
+                        <p class="eyebrow">
+                            NEXT QUESTION
+                        </p>
+                        <h2>
+                            Why wasn't the original .NET enough?
+                        </h2>
+                        <a href="dotnet-core.html">
+                            Continue to .NET Core →
+                        </a>
+                    </div>
+                     
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>
+            Always learning. Always questioning.
+        </p>
+
+    </footer>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="../js/app.js"></script>
+    
+</body>
+</html>
