@@ -323,6 +323,18 @@ footer{
     background: rgba(125, 211, 252, .04);
 }
 
+.learning-card h3{
+    margin-bottom: 12px;
+    font-size: 22px;
+    color: var(--text);
+}
+
+.learning-card p{
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+
 .card-number{
     color: var(--accent);
     font-size: 13px;
@@ -394,6 +406,7 @@ footer{
 }
 
 .note-header h1{
+    max-width: 900px;
     margin-top: 20px;
     font-size: clamp(42px, 6vw, 70px);
     line-height: 1.05;
@@ -424,65 +437,15 @@ footer{
     color: var(--muted);
 }
 
-/* =========================
-   NOTE STORY
-========================= */
-
-.note-story{
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.story-block{
-    padding: 55px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.story-block:last-child{
-    border-bottom: none;
-}
-
-.story-number{
-    display: inline-block;
-    margin-bottom: 12px;
-
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.story-block h2{
-    max-width: 750px;
-    margin: 12px 0 22px;
-
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1.15;
-}
-
-.story-block p{
-    max-width: 720px;
-    margin-bottom: 18px;
-}
-
-.story-block blockquote{
-    margin: 35px 0 10px;
-    padding: 24px 28px;
-    border-left: 3px solid var(--accent);
-    border-radius: 0 10px 10px 0;
-    
-    background: rgba(125, 211, 252, .05);
-
-    color: var(--text);
-    font-size: 21px;
-    font-weight: 600;
-    line-height: 1.5;
-}
 
 .question-box{
     margin: 50px 0;
     padding: 35px;
+
+    border: 1px solid rgba(125, 211, 252, .18);
     border-left: 3px solid var(--accent);
+    border-radius: 0 14px 14px 0;
+
     background: rgba(125, 211, 252, .05);
 }
 
@@ -545,7 +508,7 @@ footer{
 }
 
 .story-block{
-    padding: 55px 0;
+    padding: 55px 0 3rem;
     border-bottom: 1px solid var(--border) ;
 }
 
@@ -554,13 +517,23 @@ footer{
 }
 
 .story-number{
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
     margin-bottom: 12px;
+    
+    border: 1px solid rgba(125, 211, 252, .3);
+    border-radius: 50%;
 
     color: var(--accent);
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 1px;
+    background: rgba(125, 211, 252, .05);
 }
 
 .story-block h2{
@@ -572,7 +545,8 @@ footer{
 
 .story-block p{
     max-width: 720px;
-    margin-bottom: 18px;
+    margin-bottom: 5px;
+    line-height: 1.75;
 }
 
 .story-block blockquote{
@@ -589,7 +563,7 @@ footer{
 }
 
 .highlight-block{
-    margin: 30px 0;
+    margin: 3rem 0 2rem;
     padding: 45px 40px;
 
     border: 1px solid rgba(125, 211, 252, .18);
@@ -652,7 +626,7 @@ footer{
 
 .simple-diagram{
     margin-top: 35px;
-
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -663,7 +637,8 @@ footer{
 }
 
 .simple-diagram div{
-    padding: 14px 24px;
+    min-width: 220px;
+    padding: 16px 24px;
 
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -671,6 +646,7 @@ footer{
     background: var(--surface);
     color: var(--text);
 
+    text-align: center;
     font-weight: 600;
 }
 
@@ -679,6 +655,14 @@ footer{
     font-size: 22px;
 }
 
+.simple-diagram small{
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: normal;
+}
 /* =========================
    CONCEPT CARDS
 ========================= */
@@ -727,7 +711,7 @@ footer{
 
 .story-block pre{
     margin: 30px 0;
-    padding: 5px 25px;
+    padding: 15px 25px;
 
     overflow-x: auto;
 
@@ -740,7 +724,8 @@ footer{
 .story-block pre code{
     color: var(--text);
     font-family: monospace;
-    font-style: 15px;
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 /* =========================
@@ -768,11 +753,13 @@ footer{
 }
 
 .next-question a{
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
     margin-top: 10px;
 
     color: var(--accent);
-
     text-decoration: none;
     font-weight: bold;
 
@@ -780,7 +767,8 @@ footer{
 }
 
 .next-question a:hover{
-    text-decoration: underline;
+    text-decoration: none;
+    gap: 10px;
 }
 
 @media (max-width: 700px) {
