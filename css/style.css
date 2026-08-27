@@ -813,3 +813,40 @@ footer{
     }
 
 }
+
+/* ================================
+   INTERVIEW DEPTH
+================================ */
+
+.interview-depth{
+    margin-top: 5rem;
+    padding: 3rem;
+    border: 1px solid #d8d8d8;
+    border-radius: 12px;
+    /* background: #fafafa; */
+}
+
+.interview-depth h2{
+    margin-bottom: 2rem;
+}
+
+.interview-depth h3{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.interview-depth p{
+    margin-bottom: 1rem;
+}
+
+.interview-depth .simple-diagram,
+.interview-depth .story-diagram{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.interview-depth .question-box{
+    margin-top: 3rem;
+}
+

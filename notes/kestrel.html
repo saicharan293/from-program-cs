@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kestrel | From Program.cs</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="../index.html" class="logo">
+                From Program.cs
+            </a>
+
+            <div class="nav-links">
+                <a href="../pages/journey.html">
+                    Journey
+                </a>
+                <a href="#" class="active-link">
+                    Notes
+                </a>
+
+                <a href="#">
+                    Linkedin
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- PAGE HEADER  -->
+
+        <section class="note-header">
+            <div class="container">
+                <p class="eyebrow">
+                    JOURNEY · 06
+                </p>
+
+                <h1>
+                    Who actually receives the HTTP request?
+                </h1>
+
+                <p class="note-intro">
+                    I understood that ASP.NET Core processes web requests. 
+                    But that raised another question: before ASP.NET Core can 
+                    process a request, something has to receive it first.
+                </p>
+            </div>
+        </section>
+
+        <!-- STORY  -->
+
+        <section class="note-content">
+            <div class="container">
+                <article class="note-story">
+                    <!-- 01 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            01
+                        </span>
+
+                        <p class="eyebrow">
+                            THE QUESTION
+                        </p>
+
+                        <h2>
+                            Who actually receives the request?
+                        </h2>
+
+                        <p>
+                            I also understood that a browser sends an HTTP 
+                            request to the application.
+                        </p>
+
+                        <p>
+                            But something still didn't make sense.
+                        </p>
+
+                        <blockquote>
+                            When the browser sends the request, 
+                            who actually receives it?
+                        </blockquote>
+                    </div>
+
+                    <!-- 02 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            02
+                        </span>
+
+                        <p class="eyebrow">
+                            THE PROBLEM
+                        </p>
+
+                        <h2>
+                            Something has to listen for incoming connections.
+                        </h2>
+
+                        <p>
+                            A web application cannot simply wait for a request 
+                            inside a controller.
+                        </p>
+
+                        <p>
+                            That component needs to receive the request and 
+                            make it available to the application.
+                        </p>
+
+                        <div class="simple-diagram">
+                            <div>
+                                Browser
+                                <small>
+                                    Sends request
+                                </small>
+                            </div>
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                ?
+                                <small>
+                                    Receives request
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                Application
+                                <small>
+                                    Processes request
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 03 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            03
+                        </span>
+
+                        <p class="eyebrow">
+                            THE SERVER
+                        </p>
+
+                        <h2>
+                            This is where a web server comes in.
+                        </h2>
+
+                        <p>
+                            A web server is responsible for accepting incoming 
+                            network connections and handling HTTP communication 
+                            with clients.
+                        </p>
+
+                        <p>
+                            It acts as the boundary between the outside world 
+                            and the application running on the server.
+                        </p>
+
+                        <div class="simple-diagram" style="flex-direction: row;">
+                            <div>
+                                Client
+                                <small>
+                                    Browser
+                                </small>
+                            </div>
+
+                            <span>
+                                ↔
+                            </span>
+
+                            <div>
+                                Web Server
+                                <small>
+                                    Receives HTTP
+                                </small>
+                            </div>
+
+                            <span>
+                                ↔
+                            </span>
+
+                            <div>
+                                Application
+                                <small>
+                                    Processes request
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 04 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            04
+                        </span>
+
+                        <p class="eyebrow">
+                            THE .NET ANSWER
+                        </p>
+
+                        <h2>
+                            ASP.NET Core applications use Kestrel.
+                        </h2>
+
+                        <p>
+                            Now the missing piece became clearer.
+                        </p>
+
+                        <p>
+                            ASP.NET Core applications use 
+                            <strong>Kestrel</strong> 
+                            as their web server.
+                        </p>
+
+                        <p>
+                            Kestrel is responsible for listening for incoming 
+                            network connections and receiving HTTP requests.
+                        </p>
+
+                        <div class="simple-diagram">
+                            <div>
+                                Browser
+                                <small>
+                                    HTTP Request
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                Kestrel
+                                <small>
+                                    Web Server
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                ASP.NET Core
+                                <small>
+                                    Application
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 05 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            05
+                        </span>
+
+                        <p class="eyebrow">
+                            WHAT KESTREL DOES
+                        </p>
+
+                        <h2>
+                            Kestrel receives the request. 
+                            It doesn't decide what the application should do.
+                        </h2>
+
+                        <p>
+                            This distinction helped me understand Kestrel's 
+                            responsibility.
+                        </p>
+
+                        <p>
+                            Kestrel handles the web-server side of the 
+                            communication.
+                        </p>
+                        <p>
+                            It receives the HTTP request and passes it into 
+                            the ASP.NET Core application.
+                        </p>
+
+                        <p>
+                            It doesn't contain my business logic or decide 
+                            which controller should handle the request.
+                        </p>
+                    </div>
+
+                    <!-- 06 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            06
+                        </span>
+
+                        <p class="eyebrow">
+                            AFTER KESTREL
+                        </p>
+
+                        <h2>
+                            The request enters the ASP.NET Core request pipeline.
+                        </h2>
+
+                        <p>
+                            This was the connection I had been missing.
+                        </p>
+
+                        <p>
+                            Kestrel receives the request, but that is only 
+                            the beginning of the application's processing.
+                        </p>
+
+                        <p>
+                            The request then enters the 
+                            <strong>ASP.NET Core request pipeline</strong>.
+                        </p>
+
+                        <div class="story-diagram">
+                            <div>
+                                Browser
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <strong>
+                                Kestrel
+                            </strong>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <strong>
+                                ASP.NET Core
+                                Request Pipeline
+                            </strong>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                Application
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 07 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            07
+                        </span>
+
+                        <p class="eyebrow">
+                            THE BIGGER PICTURE
+                        </p>
+
+                        <h2>
+                            The request now had a path.
+                        </h2>
+
+                        <p>
+                            I could finally picture what happens when a browser 
+                            communicates with an ASP.NET Core application.
+                        </p>
+
+                        <div class="simple-diagram">
+                            <div>
+                                browser
+                                <small>
+                                    Sends HTTP request
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                Kestrel
+                                <small>
+                                    Receives request
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                ASP.NET Core
+                                <small>
+                                    Request pipeline
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                Application
+                                <small>
+                                    Handles request
+                                </small>
+                            </div>
+                        </div>
+
+                        <p>
+                            And the response follows the path back toward 
+                            the client.
+                        </p>
+                    </div>
+
+                    <!-- 08 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            08
+                        </span>
+
+                        <p class="eyebrow">
+                            THE NEXT QUESTION
+                        </p>
+
+                        <h2>
+                            But what happens inside the request pipeline?
+                        </h2>
+
+                        <p>
+                            Kestrel answered my first question: 
+                            <strong>who receives the request?</strong>
+                        </p>
+
+                        <p>
+                            But now I had another question.
+                        </p>
+
+                        <blockquote>
+                            Once the request enters ASP.NET Core,
+                            who processes it and in what order?
+                        </blockquote>
+                    </div>
+
+                    <!-- NEXT QUESTION  -->
+
+                    <div class="next-question">
+                        <p class="eyebrow">
+                            NEXT QUESTION
+                        </p>
+
+                        <h2>
+                            How does the request move through the application?
+                        </h2>
+
+                        <p>
+                            This led me to the ASP.NET Core request pipeline 
+                            and the middleware that processes requests.
+                        </p>
+                        
+                        <a href="#">
+                            Continue to Request Pipeline →
+                        </a>
+                    </div>
+                    <!-- INTERVIEW DEPTH  -->
+            
+                    <div class="story-block interview-depth">
+            
+                        <p class="eyebrow" style="text-align: center;">
+                            INTERVIEW DEPTH
+                        </p>
+            
+                        <h2>
+                            Going one level deeper into Kestrel.
+                        </h2>
+            
+                        <p>
+                            Once I understood Kestrel's basic role. I wanted to understand 
+                            how to explain it properly in interview.
+                        </p>
+            
+                        <!-- WHAT IS KESTREL  -->
+            
+                        <h3>
+                            What exactly is Kestrel?
+                        </h3>
+            
+                        <p>
+                            Kestrel is a cross-platform webserver used by ASP.NET Core 
+                            applications.
+                        </p>
+            
+                        <p>
+                            Its responsibility is to handle the web-server side of the 
+                            communication: accepting network connections, receiving HTTP 
+                            requests, and sending HTTP responses.
+                        </p>
+            
+                        <!-- KESTREL VS ASP.NET CORE  -->
+            
+                        <h3>
+                            Is Kestrel the same thing as ASP.NET Core?
+                        </h3>
+            
+                        <p>
+                            Is Kestrel the same thing as ASP.NET Core?
+                        </p>
+            
+                        <p>
+                            No. This distinction is important.
+                        </p>
+            
+                        <div class="simple-diagram">
+                            <div>
+                                Kestrel
+                                <small>
+                                    Web server
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                ASP.NET Core
+                                <small>
+                                    Web framework & request pipeline
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                Application
+                                <small>
+                                    Controllers, services, business logic
+                                </small>
+                            </div>
+                        </div>
+            
+                        <p>
+                            Kestrel accepts the network connection and receives the HTTP request. 
+                            ASP.NET Core then processes that request through its request pipeline.
+                        </p>
+            
+                        <!-- REQUEST FLOW  -->
+            
+                        <h3>
+                            What happens when a request arrives?
+                        </h3>
+            
+                        <div class="story-diagram">
+                            <div>
+                                Browser
+                                <small>
+                                    Sends HTTP request
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <strong>
+                                Kestrel
+                            </strong>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <strong>
+                                ASP.NET Core
+                                Request Pipeline
+                            </strong>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <strong>
+                                Endpoint
+                            </strong>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                HTTP Response
+                            </div>
+                        </div>
+            
+                        <!-- WHY KESTREL  -->
+            
+                        <h3>
+                            Why do we need Kestrel?
+                        </h3>
+            
+                        <p>
+                            An application needs something responsible for the network-facing 
+                            side of HTTP communication.
+                        </p>
+            
+                        <p>
+                            The controller or business service should not have to listen for 
+                            network connections or manage HTTP communication directly.
+                        </p>
+            
+                        <p>
+                            Kestrel handles that web-server responsibility so that the 
+                            application can focus on processing the request.
+                        </p>
+            
+                        <!-- KESTREL VS IIS  -->
+            
+                        <h3>
+                            How is Kestrel different from IIS?
+                        </h3>
+                        <p>
+                            Kestrel is the web server commonly used by ASP.NET Core applications. 
+                            IIS is Microsoft's web server for Windows.
+                        </p>
+            
+                        <p>
+                            An ASP.NET Core application can run directly on Kestrel, but 
+                            Kestrel can also be placed behind another web server or reverse 
+                            proxy such as IIS.
+                        </p>
+            
+                        <div class="simple-diagram">
+                            <div>
+                                Client
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                IIS / Reverse Proxy
+                                <small>
+                                    Optional front layer
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                Kestrel
+                                <small>
+                                    Web server
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                ASP.NET Core
+                            </div>
+                        </div>
+            
+                        <!-- CROSS PLATFORM  -->
+            
+                        <h3>
+                            Why is Kestrel important in the .NET Core story?
+                        </h3>
+            
+                        <p>
+                            Earlier in my journey, I learned that .NET Core was designed 
+                            around cross-platform development.
+                        </p>
+            
+                        <p>
+                            Kestrel fits naturally into that model because it is also 
+                            cross-platform.
+                        </p>
+            
+                        <div class="simple-diagram">
+                            <div>
+                                .NET Core / .NET
+                                <small>
+                                    Cross-platform platform
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                ASP.NET Core
+                                <small>
+                                    Web framework
+                                </small>
+                            </div>
+            
+                            <span>
+                                ↓
+                            </span>
+            
+                            <div>
+                                Kestrel
+                                <small>
+                                    Cross-platform web server
+                                </small>
+                            </div>
+            
+                        </div>
+            
+                        <!-- INTERVIEW CHECK  -->
+            
+                        <div class="question-box">
+                            <p class="eyebrow">
+                                INTERVIEW CHECK
+                            </p>
+            
+                            <h3>
+                                Can I explain Kestrel without memorizing a definition?
+                            </h3>
+            
+                            <p>
+                                Try answering these questions in your own words:
+                            </p>
+            
+                            <ul>
+                                <li>What is Kestrel?</li>
+                                <li>Why does an ASP.NET Core applicaiton need a web server?</li>
+                                <li>Is Kestrel the same thing as ASP.NET Core?</li>
+                                <li>What happens after Kestrel receives a request?</li>
+                                <li>Does Kestrel decide which controller handles a request?</li>
+                                <li>Can an ASP.NET Core application run without IIS?</li>
+                                <li>What is the difference between Kestrel and IIS?</li>
+                            </ul>
+                        </div>
+            
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER  -->
+
+    <footer>
+        <p>
+            Always learning. Always questioning.
+        </p>
+
+        <p>
+            C# · .NET · ASP.NET Core · Frontend
+        </p>
+    </footer>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="../js/app.js"></script>
+
+</body>
+</html>
