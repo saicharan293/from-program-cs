@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASP.NET Core Pipeline | From Program.cs</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- NAVIGATION  -->
+
+    <nav class="navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="../index.html" class="logo">
+                From Program.cs
+            </a>
+
+            <div class="nav-links">
+                <a href="../pages/journey.html">
+                    Journey
+                </a>
+
+                <a href="#" class="active-link">
+                    Notes
+                </a>
+
+                <a href="#">
+                    LinkedIn
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- PAGE HEADER  -->
+
+        <section class="note-header">
+            <div class="container">
+                <p class="eyebrow">
+                    JOURNEY · 07
+                </p>
+
+                <h1>
+                    What happens after Kestrel receives the request?
+                </h1>
+
+                <p class="note-intro">
+                    I finally understood who receives the HTTP request. 
+                    But Kestrel was only the beginning. I now needed to understand 
+                    how ASP.NET Core processes that request.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- STORY  -->
+
+        <section class="note-content">
+            <div class="container">
+                <article class="note-story">
+                    <!-- 01 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            01
+                        </span>
+
+                        <p class="eyebrow">
+                            THE QUESTION
+                        </p>
+
+                        <h2>
+                            The Kestrel receives the request. Then What?
+                        </h2>
+
+                        <p>
+                            I had learned that Kestrel is responsible for the 
+                            web-server side of communication.
+                        </p>
+
+                        <p>
+                            It receives the HTTP request and passes it into 
+                            the ASP.NET Core application.
+                        </p>
+
+                        <p>
+                            But that created another question:
+                        </p>
+
+                        <blockquote>
+                            Once ASP.NET Core receives the request, who decides 
+                            what should happen to it?
+                        </blockquote>
+                    </div>
+
+                    <!-- 02 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            02
+                        </span>
+
+                        <p class="eyebrow">
+                            THE PROBLEM
+                        </p>
+
+                        <h2>
+                            Every request may need common processing.
+                        </h2>
+
+                        <p>
+                            Imagine an application with hundreds of controllers.
+                        </p>
+
+                        <p>
+                            Many requests may need common operations such as 
+                            logging, authentication, error handling, or checking 
+                            whether a request should continue.
+                        </p>
+
+                        <p>
+                            We could put these checks inside every controller. 
+                            But that would create duplicated logic and make the 
+                            application harder to maintain.
+                        </p>
+
+                        <div class="simple-diagram">
+                            <div>
+                                Controller A
+                                <small>
+                                    Logging
+                                </small>
+                            </div>
+
+                            <div>
+                                Controller B
+                                <small>
+                                    Logging
+                                </small>
+                            </div>
+
+                            <div>
+                                Controller C
+                                <small>
+                                    Logging
+                                </small>
+                            </div>
+                        </div>
+
+                        <p>
+                            There had to be a better way to handle functionality 
+                            that applies to many or most requests. 
+                        </p>
+                    </div>
+
+                    <!-- 03 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            03
+                        </span>
+
+                        <p class="eyebrow">
+                            THE IDEA
+                        </p>
+                        
+                        <h2>
+                            what if requests passed through a common chain?
+                        </h2>
+
+                        <p>
+                            Instead of putting the same logic into every 
+                            controller, ASP.NET Core allows us to place 
+                            common request-processing logic into components 
+                            called <strong>middleware</strong>
+                        </p>
+
+                        <p>
+                            Each middleware can perform some work and then 
+                            decide whether the request should continue to 
+                            the next component.
+                        </p>
+
+                        <div class="story-diagram">
+                            <div> 
+                                HTTP Request 
+                            </div> 
+
+                            <span> 
+                                ↓ 
+                            </span> 
+
+                            <strong> 
+                                Middleware 1 
+                            </strong> 
+                            <span> 
+                                ↓ 
+                            </span> 
+
+                            <strong> 
+                                Middleware 2 
+                            </strong> 
+
+                            <span> 
+                                ↓ 
+                            </span> 
+
+                            <strong> 
+                                Middleware 3 
+                            </strong> 
+
+                            <span>
+                                ↓ 
+                            </span> 
+
+                            <div> 
+                                Endpoint
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 04 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            04
+                        </span>
+
+                        <p class="eyebrow">
+                            THE REQUEST PIPELINE
+                        </p>
+
+                        <h2>
+                            This chain became the request pipeline.
+                        </h2>
+
+                        <p>
+                            The ASP.NET Core request pipeline is the sequence 
+                            of middleware components through which an HTTP 
+                            request passes.
+                        </p>
+
+                        <p>
+                            Each middleware can perform work before passing 
+                            the request forward.
+                        </p>
+
+                        <p>
+                            Middleware can also perform work after the next 
+                            component has finished processing the request.
+                        </p>
+
+                        <div class="simple-diagram">
+                            <div>
+                                Request 
+                                <small>
+                                    Enters pipeline 
+                                </small>
+                            </div>
+
+                            <span>
+                                ↓
+                            </span>
+
+                            <div>
+                                Middleware 
+                                <small>
+                                    Process
+                                </small>
+                            </div>
+
+                            <span> 
+                                ↓ 
+                            </span>
+
+                            <div>
+                                Next middleware 
+                                <small>
+                                    Continue
+                                </small>
+                            </div>
+
+                            <span> 
+                                ↓ 
+                            </span>
+
+                            <div>
+                                Endpoint 
+                                <small>
+                                    Handle request
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 05 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            05
+                        </span>
+
+                        <p class="eyebrow">
+                            WHY MIDDLEWARE?
+                        </p>
+
+                        <h2>
+                            Common behavior can live in pone place.
+                        </h2>
+
+                        <p>
+                            This was the architectural idea that finally 
+                            made middleware useful to me.
+                        </p>
+
+                        <p>
+                            If many requests need the same functionality, 
+                            that functionality can be placed into middleware 
+                            instead of being repeatedly implemented in 
+                            controllers.
+                        </p>
+
+                        <div class="concept-grid">
+
+                            <div class="concept-card">
+                                <h3>
+                                    Logging 
+                                </h3>
+
+                                <p>
+                                    Record information about incoming requests 
+                                    and outgoing responses.
+                                </p>
+                            </div>
+
+                            <div class="concept-card">
+                                <h3>
+                                    Authentication 
+                                </h3>
+
+                                <p>
+                                    Establish the identity assocated with 
+                                    the request.
+                                </p>
+                            </div>
+
+                            <div class="concept-card">
+                                <h3>
+                                    Error handling
+                                </h3>
+
+                                <p>
+                                    Handle failures consistently instead of 
+                                    repeating the same logic everywhere.
+                                </p>
+                                
+                            </div>
+
+                            <div class="concept-card">
+                                <h3>
+                                    Authorization
+                                </h3>
+
+                                <p>
+                                    Apply access-control decisions before 
+                                    protected functionality executes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 06 -->
+
+                    <div class="story-block">
+                        <span class="story-number">
+                            06
+                        </span>
+
+                        <p class="eyebrow">
+                            ORDER MATTERS
+                        </p>
+
+                        <h2>
+                            Middleware is not just a collection of components.
+                        </h2>
+
+                        <p>
+                            Another important realization was that middleware 
+                            executes in a specific order.
+                        </p>
+
+                        <p>
+                            The order matters because one middleware can affect 
+                            what the next middleware receives or whether the 
+                            request reaches it at all.
+                        </p>
+
+                        <div class="story-diagram"> 
+                            <strong> 
+                                Middleware A 
+                            </strong> 
+                            <span> 
+                                ↓ 
+                            </span> 
+                            <strong> 
+                                Middleware B 
+                            </strong> 
+                            <span> 
+                                ↓ 
+                            </span> 
+                            <strong> 
+                                Middleware C 
+                            </strong> 2
+                            <span> 
+                                ↓ 
+                            </span> 
+                            <strong> 
+                                Endpoint 
+                            </strong> 
+                        </div>
+
+                        <p>
+                            So when I look at middleware configuration in 
+                            <code>Program.cs</code>, the order of those 
+                            registrations is part of the application's 
+                            behaviour.
+                        </p>
+                    </div>
+
+                    <!-- 07 -->
+
+                    <div class="story-block">
+
+                        <span class="story-number">
+                            07
+                        </span>
+
+                        <p class="eyebrow">
+                            PROGRAM.CS AGAIN
+                        </p>
+
+                        <h2>
+                            Program.cs was starting to make sense.
+                        </h2>
+
+                        <p>
+                            I had previously seen code such as:
+                        </p>
+
+                        <pre>
+                            <code>
+                                app.UseAuthentication();
+                                app.UseAuthorization();
+                                app.MapControllers();
+                            </code>
+                        </pre>
+
+                        <p>
+                            I could now see that these lines were not random 
+                            configuration statements.
+                        </p>
+
+                        <p>
+                            They were helping define how requests should be 
+                            processed by the application.
+                        </p>
+
+                        <div class="simple-diagram">
+                            <div>
+                                Program.cs
+                                <small>
+                                    Configure application
+                                </small>
+
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Middleware
+                                    <small> 
+                                        Process request 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Endpoint 
+                                    <small> 
+                                        Execute application code 
+                                    </small> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 08 -->
+
+                        <div class="story-block">
+                            <span class="story-number">
+                                08
+                            </span>
+
+                            <p class="eyebrow">
+                                ARCHITECTURE VIEW
+                            </p>
+
+                            <h2>
+                                The pipeline separates common request concerns from application logic.
+                            </h2>
+
+                            <p>
+                                This was the point where I started looking at 
+                                ASP.NET Core from a more architectural perspective.
+                            </p>
+
+                            <p>
+                                Controllers should primarily deal with application 
+                                behaviour rather than repeatedly implementing 
+                                cross-cutting concerns such as logging, authentication, 
+                                or centralized error handling.
+                            </p>
+                            <p>
+                                Middleware gives the application a place to handle 
+                                those concerns around the request-processing flow.
+                            </p>
+
+                            <div class="simple-diagram">
+                                <div>
+                                    Request
+                                </div>
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Cross-cutting concerns 
+                                    <small> 
+                                        Middleware 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Application logic 
+                                    <small> 
+                                        Controllers / endpoints 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Response 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 09 -->
+
+                        <div class="story-block">
+                            <span class="story-number">
+                                09
+                            </span>
+
+                            <p class="eyebrow">
+                                THE BIGGER PICTURE
+                            </p>
+
+                            <h2>
+                                The entire request journey was becoming visible.
+                            </h2>
+
+                            <p>
+                                I could now connect the pieces i had learned so far.
+                            </p>
+
+                            <div class="story-diagram"> 
+                                <div> 
+                                    Browser 
+                                    <small> 
+                                        Sends request 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Kestrel 
+                                    <small> 
+                                        Receives HTTP 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Request Pipeline 
+                                    <small> 
+                                        Middleware 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    Endpoint 
+                                    <small> 
+                                        Application code 
+                                    </small> 
+                                </div> 
+                                <span> 
+                                    ↓ 
+                                </span> 
+                                <div> 
+                                    HTTP Response 
+                                </div> 
+                            </div>
+                            <p>
+                                Kestrel handles the web-server side. 
+                                The ASP.NET Core request pipeline handles the 
+                                application's request-processing flow.
+                            </p>
+                        </div>
+
+                        <!-- 10 -->
+
+                        <div class="story-block interview-depth">
+                            <span class="story-number">
+                                10
+                            </span>
+
+                            <p class="eyebrow">
+                                INTERVIEW DEPTH
+                            </p>
+
+                            <h2>
+                                Can I explain the request pipeline properly?
+                            </h2>
+
+                            <h3>
+                                What is the ASP.NET Core request pipeline?
+                            </h3>
+
+                            <p>
+                                It is the sequence of middleware components through 
+                                which an HTTP request passes before reaching the 
+                                appropriate endpoint, with the response travelling 
+                                back through the pipeline.
+                            </p>
+
+                            <h3>
+                                Why do we need middleware?
+                            </h3>
+
+                            <p>
+                                Middleware provides a centralized wasy to implement 
+                                request-processing behaviour that may apply accross 
+                                multiple endpoints, such as logging, authentication, 
+                                authorization, exception handling, and other 
+                                cross-cutting concerns.
+                            </p>
+
+                            <h3>
+                                Does every middleware have to pass the request forward?
+                            </h3>
+
+                            <p>
+                                No. Middleware can choose not to call the next 
+                                component. In that case, the pipeline can terminate 
+                                at that middleware instead of continuing toward 
+                                the endpoint.
+                            </p>
+
+                            <h3>
+                                Why does middleware order matter?
+                            </h3>
+
+                            <p>
+                                Middleware executes in the order it is added to 
+                                the pipeline for the incoming request. Therefore, 
+                                changing the order can change application behaviour.
+                            </p>
+
+                            <h3>
+                                Is middleware the same as a controller?
+                            </h3>
+
+                            <p>
+                                No. Middleware participates in the request pipeline 
+                                and can operate on many or all requests. A controller 
+                                action is application-level endpoin logic selected 
+                                after routing determines the appropriate endpoint.
+                            </p>
+
+                            <h3>
+                                What is the architectural benefit?
+                            </h3>
+
+                            <p>
+                                Middleware allows common request concerns to be 
+                                separated from individual endpoint implementations, 
+                                reducing duplicaiton and keeping application logic 
+                                focused on its actual responsibility.
+                            </p>
+
+                            <div class="question-box">
+
+                                <p class="eyebrow">
+                                    INTERVIEW CHECK
+                                </p>
+
+
+                                <h3>
+                                    Try explaining this without memorizing the definition.
+                                </h3>
+
+                                <ul>
+                                    <li>What happpens after Kestrel receives a request?</li>
+                                    <li> What is the request pipeline? </li>
+                                    <li>What is middleware?</li>
+                                    <li>Why don't we put common request logic inside every controller?</li>
+                                    <li>Why does middleware order matter?</li>
+                                    <li>Can middleware stop a request from reaching the endpoint?</li>
+                                    <li>How is middleware different from a controller?</li>
+                                    <li>Where is middleware configured?</li>
+                                    <li>How does middleware fit into the overall architecture?</li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <!-- NEXT QUESTION  -->
+
+                        <div class="next-question">
+
+                            <p class="eyebrow">
+                                NEXT QUESTION
+                            </p>
+
+                            <h2>
+                                If middlware processes the request, how does ASP.NET Core know which endpoint should handle it?
+                            </h2>
+
+                            <p>
+                                That question led me to routing and how ASP.NET Core 
+                                maps an incoming request to an endpoint.
+                            </p>
+
+                            <a href="routing.html">
+                                Continue to Routing →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER  -->
+
+    <footer>
+        <p>
+            Always learning. Always questioning.
+        </p>
+        <p>
+            C# · .NET · ASP.NET Core · Frontend
+        </p>
+    </footer>
+
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"> 
+    </script> 
+    <script src="../js/app.js"></script>
+</body>
+</html>
