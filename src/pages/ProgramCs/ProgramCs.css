@@ -1,0 +1,208 @@
+
+/* PROGRAM.CS PAGE */
+
+.note-header {
+  padding: 90px 0 55px;
+}
+
+.note-header h1 {
+  max-width: 850px;
+  margin-top: 20px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.note-intro {
+  max-width: 720px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* STORY CONTENT */
+
+.note-content {
+  padding: 20px 0 100px;
+}
+
+.note-story {
+  max-width: 850px;
+}
+
+.story-block {
+  padding: 45px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.story-number {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.story-block h2 {
+  margin: 15px 0 22px;
+  color: var(--text);
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.25;
+}
+
+.story-block p:not(.eyebrow) {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.story-block strong {
+  color: var(--text);
+}
+
+.story-block code {
+  color: var(--accent);
+  font-size: 0.92em;
+}
+
+/* CODE BLOCKS */
+
+.story-block pre {
+  margin: 28px 0;
+  padding: 24px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #080d17;
+}
+
+.story-block pre code {
+  color: #c9d7e8;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre;
+}
+
+/* QUOTES */
+
+.story-block blockquote {
+  margin: 30px 0;
+  padding: 18px 24px;
+  border-left: 3px solid var(--accent);
+  background: rgba(125, 211, 252, 0.05);
+  color: var(--text);
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* SIMPLE DIAGRAMS */
+
+.simple-diagram,
+.story-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 35px 0;
+  padding: 30px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.simple-diagram > div,
+.story-diagram > div,
+.story-diagram > strong {
+  width: 100%;
+  max-width: 420px;
+  padding: 16px 20px;
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  border-radius: 9px;
+  background: rgba(125, 211, 252, 0.06);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.simple-diagram span,
+.story-diagram span {
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.simple-diagram small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.story-diagram > strong {
+  color: var(--accent);
+}
+
+/* NEXT QUESTION */
+
+.next-question {
+  margin-top: 65px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(125, 211, 252, 0.08),
+    rgba(125, 211, 252, 0.01)
+  );
+}
+
+.next-question h2 {
+  margin: 15px 0;
+  color: var(--text);
+  font-size: clamp(26px, 3vw, 34px);
+}
+
+.next-question p:not(.eyebrow) {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.next-question a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.next-question a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .note-header {
+    padding: 55px 0 35px;
+  }
+
+  .story-block {
+    padding: 35px 0;
+  }
+
+  .next-question {
+    padding: 28px 22px;
+  }
+
+  .story-block pre {
+    padding: 18px;
+  }
+}

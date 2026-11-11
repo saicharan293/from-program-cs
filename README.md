@@ -1,104 +1,16 @@
-# Journey From Program.cs
+# React + Vite
 
-> Following the questions behind the code.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-🌐 **Live Website:** https://journey-from-programcs.netlify.app/
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-A personal learning journey that started with C# and one simple question:
+## React Compiler
 
-> What is actually happening inside Program.cs?
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Why I started this
+## Expanding the ESLint configuration
 
-I initially wanted to learn C# fundamentals.
-
-But while working on a .NET application, I came across `Program.cs` and realized that knowing C# syntax wasn't enough for me to understand what was happening inside the application.
-
-That question led me deeper:
-
-C#  
-↓  
-.NET  
-↓  
-.NET Core  
-↓  
-ASP.NET Core  
-↓  
-Kestrel  
-↓  
-Middleware  
-↓  
-Routing  
-↓  
-Dependency Injection  
-↓  
-Authentication & Authorization
-
-Each answer led to another question.
-
-Instead of treating those questions as distractions, I decided to follow them and build my understanding step by step.
-
-This website is a place to capture that journey.
-
----
-
-## The learning process
-
-I'm not trying to learn everything by simply following a predefined roadmap.
-
-My current approach is:
-
-**Question → Investigate → Challenge my understanding → Connect the pieces → Build → Repeat**
-
-Whenever I encounter something I don't understand, I try to go one level deeper instead of simply memorizing the answer.
-
----
-
-## What I'm building
-
-This project is also part of my learning.
-
-I'm building the website while learning:
-
-- HTML
-- CSS
-- Bootstrap
-- JavaScript
-- Git & GitHub
-- React
-- .NET / ASP.NET Core
-
-The goal isn't just to create a website.
-
-The goal is to understand the technologies by actually using them.
-
----
-
-## Current journey
-
-```text
-C#
- │
- ▼
-Program.cs
- │
- ▼
-.NET
- │
- ▼
-.NET Core
- │
- ▼
-ASP.NET Core
- │
- ├── Kestrel
- │
- ├── Middleware
- │
- ├── Routing
- │
- ├── Dependency Injection
- │
- └── Authentication & Authorization
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

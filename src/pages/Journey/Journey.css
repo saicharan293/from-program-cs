@@ -1,0 +1,149 @@
+
+/* JOURNEY PAGE */
+
+.journey-header {
+  padding: 100px 0 60px;
+}
+
+.journey-header h1 {
+  max-width: 800px;
+  margin-top: 20px;
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.05;
+}
+
+.journey-intro {
+  max-width: 700px;
+  margin-top: 25px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* LEARNING CARDS */
+
+.learning-card {
+  height: 100%;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+
+.learning-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(125, 211, 252, .4);
+  background: rgba(125, 211, 252, .04);
+}
+
+.learning-card h2 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.learning-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.card-number {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.card-question {
+  color: var(--accent) !important;
+  font-weight: bold;
+}
+
+.learning-card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* NEXT SECTION */
+
+.next-section {
+  padding: 70px 0 120px;
+}
+
+.next-card {
+  padding: 50px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(125, 211, 252, 0.08),
+    rgba(125, 211, 252, 0.01)
+  );
+}
+
+.next-card h2 {
+  max-width: 700px;
+  margin: 15px 0;
+  font-size: 2rem;
+}
+
+.next-card p:not(.eyebrow) {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+/* JOURNEY SEARCH */
+
+.journey-search {
+  max-width: 600px;
+  margin: 0 0 45px;
+}
+
+.search-label {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 22px;
+  pointer-events: none;
+}
+
+.search-wrapper .form-control {
+  min-height: 52px;
+  padding-left: 48px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.search-wrapper .form-control:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, .1);
+}
+
+.search-wrapper .form-control::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}

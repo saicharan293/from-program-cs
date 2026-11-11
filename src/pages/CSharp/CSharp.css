@@ -1,0 +1,106 @@
+
+/* PAGE HEADER */
+
+.note-header {
+    padding: 90px 0 55px;
+}
+
+.note-header h1 {
+    max-width: 850px;
+    margin-top: 20px;
+    color: var(--text);
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.1;
+}
+
+.note-intro {
+    max-width: 720px;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* STORY CONTENT */
+
+.note-content {
+    padding: 20px 0 100px;
+}
+
+.note-story {
+    max-width: 850px;
+}
+
+.csharp-story h2 {
+    margin: 45px 0 22px;
+    color: var(--text);
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.25;
+}
+
+.csharp-story h2:first-child {
+    margin-top: 0;
+}
+
+.csharp-story p:not(.eyebrow) {
+    margin-bottom: 18px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.csharp-story code {
+    color: var(--accent);
+    font-size: 0.92em;
+}
+
+
+/* QUESTION BOX */
+
+.question-box {
+    margin: 40px 0;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+}
+
+.question-box h3 {
+    margin: 15px 0 0;
+    color: var(--text);
+    font-size: clamp(22px, 2.5vw, 28px);
+    line-height: 1.4;
+}
+
+
+/* READ LINK */
+
+.read-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.read-link:hover {
+    text-decoration: underline;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .note-header {
+        padding: 55px 0 35px;
+    }
+
+    .question-box {
+        padding: 24px 20px;
+    }
+
+    .csharp-story h2 {
+        margin-top: 35px;
+    }
+}
