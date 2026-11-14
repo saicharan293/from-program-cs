@@ -1,0 +1,69 @@
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 8%;
+  border-bottom: 1px solid #1e293b;
+}
+
+.brand {
+  color: #e5e7eb;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand span {
+  color: #7dd3fc;
+}
+
+.site-header p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin: 0;
+}
+
+
+/* Hidden on desktop */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid #1e293b;
+  color: #7dd3fc;
+  font-size: 24px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Visible on mobile */
+@media (max-width: 767px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 767px) {
+  .site-header {
+    padding: 18px 20px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .site-header p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 320px) {
+  .site-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}

@@ -359,4 +359,55 @@
     .next-question h2 {
         font-size: 1.4rem;
     }
+
+    .story-block {
+        margin-bottom: 45px;
+    }
+
+    .story-block p,
+    .story-block li {
+        font-size: 0.95rem;
+        line-height: 1.75;
+    }
+
+    .story-block blockquote,
+    .next-question blockquote {
+        padding: 15px 16px;
+        font-size: 0.95rem;
+    }
+
+    .simple-diagram {
+        gap: 10px;
+        margin: 22px 0;
+    }
+
+    .simple-diagram > div {
+        padding: 13px 14px;
+    }
+
+    .story-diagram {
+        padding: 18px 10px;
+        gap: 10px;
+    }
+
+    .story-diagram > div,
+    .story-diagram > strong {
+        padding: 12px 10px;
+        overflow-wrap: anywhere;
+    }
+
+    .concept-card {
+        padding: 18px;
+    }
+
+    .interview-depth,
+    .question-box,
+    .next-question {
+        padding: 18px;
+    }
+
+    .question-box li {
+        overflow-wrap: anywhere;
+    }
+    
 }

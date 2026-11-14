@@ -206,3 +206,52 @@
     padding: 18px;
   }
 }
+
+@media (max-width: 480px) {
+
+  .note-header {
+    padding: 45px 0 30px;
+  }
+
+  .note-intro {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .story-block {
+    padding: 28px 0;
+  }
+
+  .story-block p:not(.eyebrow) {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .story-block blockquote {
+    padding: 16px 18px;
+    font-size: 17px;
+  }
+
+  .simple-diagram,
+  .story-diagram {
+    padding: 22px 12px;
+    gap: 10px;
+  }
+
+  .simple-diagram > div,
+  .story-diagram > div,
+  .story-diagram > strong {
+    padding: 14px 12px;
+    font-size: 14px;
+  }
+
+  .next-question {
+    margin-top: 40px;
+    padding: 24px 18px;
+  }
+
+  .next-question p:not(.eyebrow) {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}

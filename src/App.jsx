@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import './App.css'
 import Sidebar from './components/Sidebar'
@@ -14,14 +14,21 @@ import DotNetCore from './pages/DotNetCore/DotNetCore'
 import AspNetCore from './pages/AspNetCore/AspNetCore'
 import RequestPipeline from './pages/RequestPipeline/RequestPipeline'
 import Routing from './pages/Routing/Routing'
+import ProblemLibrary from './pages/ProblemLibrary/ProblemLibrary'
 
 const App = () => {
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className='app'>
-      <Navbar />
+      <Navbar onMenuClick={()=> setIsMobileMenuOpen(true)}/>
 
       <div className="page-layout">
-        <Sidebar />
+        <Sidebar isMobileMenuOpen= {isMobileMenuOpen} onClose={()=>setIsMobileMenuOpen(false)}/>
+        {isMobileMenuOpen && (
+          <div className="mobile-sidebar-overlay" onClick={() => setIsMobileMenuOpen(false)}/>
+        )}
         <main className="main-content">
           <Routes >
             <Route path="/" element={<Home />}/>
@@ -34,6 +41,7 @@ const App = () => {
             <Route path="/kestrel" element={<Kestrel />} />
             <Route path="/request-pipeline" element={<RequestPipeline />} />
             <Route path="/routing" element={<Routing />} />
+            <Route path="/problems" element={<ProblemLibrary />} />
           </Routes>
         </main>
       </div>

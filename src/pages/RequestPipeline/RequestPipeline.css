@@ -131,6 +131,12 @@
 }
 
 
+.simple-diagram > div,
+.story-diagram > div,
+.story-diagram > strong {
+    box-sizing: border-box;
+}
+
 /* STORY DIAGRAM */
 
 .story-diagram {
@@ -319,7 +325,7 @@
 
 @media (max-width: 480px) {
     .note-header h1 {
-        font-size: 30px;
+        font-size: clamp(28px, 8vw, 32px);
     }
 
     .story-block p {
@@ -329,5 +335,10 @@
     .story-block blockquote {
         padding: 16px;
         font-size: 16px;
+    }
+
+    .question-box li {
+        font-size: 14px;
+        line-height: 1.7;
     }
 }

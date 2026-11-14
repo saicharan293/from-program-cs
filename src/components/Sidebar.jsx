@@ -1,13 +1,10 @@
 
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import './Sidebar.css';
 
-<style>
-  Link{
 
-  }
-</style>
-function Sidebar() {
+function Sidebar({ isMobileMenuOpen, onClose }) {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const links = [
@@ -21,10 +18,11 @@ function Sidebar() {
     { to: "/kestrel", label: "Kestrel", short: "K" },
     { to: "/request-pipeline", label: "Request Pipeline", short: "RP" },
     { to: "/routing", label: "Routing", short: "RO" },
+    { to: "/problems", label: "Problem Library", short: "PL" },
   ]
 
   return (
-    <aside className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+    <aside className={`sidebar ${isCollapsed ? "collapsed" : ""} ${isMobileMenuOpen ? "mobile-open" : ""}`}>
       <div className="sidebar-top">
         {!isCollapsed && (
           <p className="sidebar-heading">THE JOURNEY</p>
@@ -41,10 +39,10 @@ function Sidebar() {
       </div>
 
       <div className="sidebar-links">
-        <ul style={{paddingLeft: 0}}>
+        <ul style={{paddingLeft: 0, paddingBottom: '3rem'}}>
           {links.map((link) => (
             <li key={link.to}>
-              <Link to={link.to} title={link.label} className="sidebar-link-tab">
+              <Link to={link.to} title={link.label} className="sidebar-link-tab" onClick={onClose}>
                 <span className="sidebar-short">
                   {link.short}
                 </span>
